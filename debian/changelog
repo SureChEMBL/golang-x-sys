@@ -1,0 +1,111 @@
+golang-golang-x-sys (0.0~git20170727.0.35ef448-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Remove 0001-Support_mips64el.patch
+    because the Dup2 syscall has been added upstream in May 2017.
+    See "unix: add missing dup2 syscall on mips64*"
+    at https://go-review.googlesource.com/43430 and
+    at https://github.com/golang/sys/commit/6b70689.
+  * Fix the build on mips, mipsel and mips64el
+    as a continuation of the effort that Martín Ferrari started,
+    see https://github.com/golang/go/issues/18031.
+    Due to the current minimal code change to golang.org/x/sys/unix,
+    and to ensure the bool isBigEndian is set correctly, please run
+    gccgo with "-tags mips", "-tags mipsle" or "-tags mips64le"
+    as appropriate.
+  * Use debhelper (>= 10).
+  * Add "Testsuite: autopkgtest-pkg-go" to debian/control.
+
+ -- Anthony Fok <foka@debian.org>  Thu, 27 Jul 2017 21:14:10 -0600
+
+golang-golang-x-sys (0.0~git20170630.0.4ed4d40-1) unstable; urgency=medium
+
+  [ Martín Ferrari ]
+  * Add versioned dependency on golang 1.4, as 1.3 is missing textflag.h.
+
+  [ Anthony Fok ]
+  * New upstream snapshot.
+  * Bump Standards-Version to 4.0.0:
+    Use https form of the copyright-format URL in debian/copyright.
+
+ -- Anthony Fok <foka@debian.org>  Fri, 30 Jun 2017 11:27:35 -0600
+
+golang-golang-x-sys (0.0~git20161122.0.30237cf-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fix the build on mips64el. Support for mips/mipsel/alpha is still missing.
+    https://github.com/golang/go/issues/18031
+  * debian/changelog: Make Source point to the github repository.
+
+ -- Martín Ferrari <tincho@debian.org>  Thu, 24 Nov 2016 09:26:11 +0000
+
+golang-golang-x-sys (0.0~git20161017.0.002cbb5-1) unstable; urgency=medium
+
+  * New upstream release. Closes: #840423.
+  * Do not include plan9 and windows packages that are not relevant to Debian.
+    In particular, the plan9 package makes builds fail when using gccgo.
+
+ -- Martín Ferrari <tincho@debian.org>  Thu, 20 Oct 2016 21:20:24 +0200
+
+golang-golang-x-sys (0.0~git20161012.0.9bb9f09-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Anthony Fok <foka@debian.org>  Sun, 16 Oct 2016 05:17:34 -0600
+
+golang-golang-x-sys (0.0~git20160704.0.a408501-1) unstable; urgency=medium
+
+  * New upstream release. Closes: #828089.
+  * debian/control:
+    - Depend on recent dh-golang.
+    - Remove unneeded Built-Using field.
+  * debian/rules: use new dh-golang features to simplify rules.
+
+ -- Martín Ferrari <tincho@debian.org>  Mon, 04 Jul 2016 17:28:03 +0000
+
+golang-golang-x-sys (0.0~git20160611.0.7f918dd-1) unstable; urgency=medium
+
+  * New upstream import
+  * Change golang-go to golang-any in Build-Depends and Depends
+    so gccgo may be used where golang-go is unavailable.
+
+ -- Anthony Fok <foka@debian.org>  Sun, 12 Jun 2016 08:36:33 -0600
+
+golang-golang-x-sys (0.0~git20160517.0.d4feaf1-1) unstable; urgency=medium
+
+  [ Martín Ferrari ]
+  * Depend and build-depend on golang 1.4, as it fails to build with older
+    versions.
+  * Require dh-golang 1.10, for XS-Go-Import-Path.
+  * Don't fail if a file to clean is not present.
+
+  [ Michael Hudson-Doyle ]
+  * New upstream import.
+
+ -- Martín Ferrari <tincho@debian.org>  Thu, 19 May 2016 02:23:19 +0000
+
+golang-golang-x-sys (0.0~git20160421.0.b776ec3-1) unstable; urgency=medium
+
+  * New upstream import, which fixes issues with inotify in ppc64*.
+  * Add myself to Uploaders.
+  * Clean more unneeded files from package.
+
+ -- Martín Ferrari <tincho@debian.org>  Sat, 30 Apr 2016 21:04:40 +0000
+
+golang-golang-x-sys (0.0~git20160415.0.f64b50f-1) unstable; urgency=medium
+
+  * Update debian/control
+    - Bump Standards-Version to 3.9.8
+    - Use https URLs for Vcs-Browser and Vcs-Git
+    - Add XS-Go-Import-Path field
+    - Remove dependency on golang-go
+    - Add myself to Uploaders
+  * Imported Upstream version 0.0~git20160415.0.f64b50f
+
+ -- Anthony Fok <foka@debian.org>  Wed, 20 Apr 2016 01:17:58 +0800
+
+golang-golang-x-sys (0.0~git20150612-1) unstable; urgency=medium
+
+  * Initial release (Closes: #788909)
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Tue, 16 Jun 2015 09:11:33 +0200
